@@ -1,0 +1,157 @@
+!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Steven Kim</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/landing-page.css" rel="stylesheet">
+
+    <!-- My CSS -->
+    <link href="mycss.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
+        <div class="container topnav">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand topnav" href="index.html">stevenjkim.com</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="About.html">About</a>
+                    </li>
+                    <li>
+                        <a href="Work.html">Work</a>
+                    </li>
+                    <li>
+                        <a href="index.html">Contact</a>
+                    </li>
+                    <li>
+                        <a href="resume.pdf">Resume</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+
+
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <!-- Page Header -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header text-center"> Collaborative Graphical Editor
+                </h1>
+            </div>
+        </div>
+
+    <!--Pictures-->
+    <div class="row">
+        <div class="col-lg-6">
+          <img class="img-responsive" src="CGE_Main.png" alt="">
+        </div>
+        <div class="col-lg-6">
+          <img class="img-responsive" src="CGE.jpg" alt="">
+        </div>
+    </div>
+
+    <!--Content-->
+    <br>
+
+    <div>
+      <p> Developed in Java, the Collaborative Graphical Editor to allow multiple
+        users to design and edit simple designs at the same time.
+      </p>
+
+      <p> There are five components to this project: </p>
+        <ul>
+          <li>
+            An <i>editor</i> sends requests to, according to the user's commands,
+            and receives requests from the <i>editor communicator</i>. Its state
+            is updated according to the command the <i>editor communicator passes on</i>.
+          </li>
+          <li>
+            An <i>editor communicator</i> sends requests to and receives requests
+            from the <i>sketch server communicator</i>.
+          </li>
+          <li>
+            <i>Handle message</i> is a middleman that intercepts requests to the
+            <i>editor communicator</i> and the <i>sketch server communicator</i>. Because all
+            forms of communication is done through strings, it analyzes which
+            commands need to be executed according to the string that is passed.
+          </li>
+          <li>
+            A <i>sketch server communicator</i> sends requests to the <i>server</i> and
+            receives requests from the <i>editor communicator</i>.
+          </li>
+          <li>
+            The <i>sketch server </i> updates the overall state and passes it onto clients.
+          </li>
+        </ul>
+
+      <p> Four options were implemented: 'draw', 'move', 'recolor', and 'delete'.
+        The user can draw an ellipse, rectangle, a polyline(free drawing line), or
+        a straight line. The user can also select any color of his/her choice.
+      </p>
+    </div>
+
+
+        <hr>
+        <!-- Footer -->
+        <footer style="background-color:white">
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; Steven Joo Hyun Kim 2017. All Rights Reserved</p>
+                </div>
+            </div>
+            <!-- /.row -->
+        </footer>
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

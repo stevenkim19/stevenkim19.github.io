@@ -1,0 +1,67 @@
+.dropdown:hover .dropdown-menu {
+display: block;
+}
+
+/* About Me */
+.center {
+  text-align: center;
+}
+.mypic {
+  width: 400px;
+  height: 280px;
+  margin-bottom: 55px;
+}
+.aboutmetext {
+  font-size: 16px;
+}
+div.margin {
+  width: 750px;
+  height: 120px;
+  margin: auto;
+  margin-bottom: 70px;
+}
+.aboutmetexts1 {
+  font-size: 17px;
+}
+.aboutmetexts2 {
+  font-size: 15px;
+}
+img.img-rounded.top_pic {
+  width: 250px;
+  height: 135px;
+}
+img.img-rounded.bottom_pic {
+  width: 530px;
+  height: 265px;
+}
+td.topalign {
+  vertical-align: top;
+}
+img.college_pic {
+  width: 530px;
+  height: 350px;
+  margin-left: 30px;
+}
+.table_margin {
+  border-collapse: separate;
+  border-spacing: 30px 50px;
+}
+.topalign > h2 {
+  margin-top: 50px;
+}
+
+#collegedescription {
+  margin-bottom: 150px;
+}
+
+
+/* Work */
+#CS_image {
+  width: 99%;
+  max-height: 35.6%;
+}
+
+/* Cisco */
+#Cisco_Table {
+  padding: 20px;
+}

@@ -1,0 +1,102 @@
+R5#sh run
+Building configuration...
+
+
+Current configuration : 1307 bytes
+!
+! Last configuration change at 18:03:50 UTC Tue Mar 18 2014
+!
+version 15.0
+no service timestamps debug uptime
+no service timestamps log uptime
+no service password-encryption
+!
+hostname R5
+!
+boot-start-marker
+boot-end-marker
+!
+!
+no aaa new-model
+!
+!
+!
+memory-size iomem 10
+!
+no ipv6 cef
+ip source-route
+ip cef
+!
+!
+!
+!
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+voice-card 0
+!
+!
+!
+!
+!
+!
+license udi pid CISCO2901/K9 sn FTX152885A3
+license accept end user agreement
+license boot module c2900 technology-package securityk9
+license boot module c2900 technology-package uck9
+!
+!
+!
+redundancy
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ ip address 11.12.13.14 255.255.255.255
+ no shutdown
+!
+interface GigabitEthernet0/0
+ ip address 192.168.6.2 255.255.255.0
+ duplex auto
+ speed auto
+ no shutdown
+!
+!
+!
+!
+router eigrp 1
+ network 11.0.0.0
+ network 192.168.6.0
+ redistribute bgp 2
+!
+ip forward-protocol nd
+!
+no ip http server
+no ip http secure-server
+!
+!
+!
+!
+gatekeeper
+ shutdown
+!
+!
+line con 0
+line aux 0
+line vty 0 4
+ login
+!
+scheduler allocate 20000 1000
+end

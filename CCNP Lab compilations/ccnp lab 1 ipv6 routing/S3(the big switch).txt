@@ -1,0 +1,91 @@
+S3#sh run
+
+hostname S3
+!
+boot system slot0:s222-adventerprisek9_wan-mz.122-18.SXF17b.bin
+!
+no aaa new-model
+ip subnet-zero
+!
+!
+!
+no ip domain-lookup
+ipv6 unicast-routing
+mls flow ip destination
+mls flow ipx destination
+no mls acl tcam share-global
+!
+!
+!
+!
+!
+!
+!
+!
+redundancy
+ mode rpr-plus
+ main-cpu
+  auto-sync running-config
+  auto-sync standard
+spanning-tree mode pvst
+diagnostic cns publish cisco.cns.device.diag_results
+diagnostic cns subscribe cisco.cns.device.diag_commands
+fabric timer 15
+!
+vlan internal allocation policy ascending
+!
+!
+!
+interface FastEthernet4/1
+ no ip address
+ no shutdown
+ ipv6 address 2006::/64 eui-64
+ ipv6 rip Cisco enable
+!
+interface FastEthernet4/2
+ no ip address
+ no shutdown
+ ipv6 address 2007::/64 eui-64
+ ipv6 rip Cisco enable
+!
+!
+ipv6 router rip Cisco
+
+S3(config)#do sh ipv6 route
+
+IPv6 Routing Table - 12 entries
+Codes: C - Connected, L - Local, S - Static, R - RIP, B - BGP
+       U - Per-user Static route
+       I1 - ISIS L1, I2 - ISIS L2, IA - ISIS interarea, IS - ISIS summary
+       O - OSPF intra, OI - OSPF inter, OE1 - OSPF ext 1, OE2 - OSPF ext 2
+       ON1 - OSPF NSSA ext 1, ON2 - OSPF NSSA ext 2
+R   2000::/64 [120/7]
+     via FE80::4255:39FF:FEB7:61E9, FastEthernet4/1
+R   2001::/64 [120/6]
+     via FE80::4255:39FF:FEB7:61E9, FastEthernet4/1
+R   2003::/64 [120/4]
+     via FE80::4255:39FF:FEB7:61E9, FastEthernet4/1
+R   2004::/64 [120/3]
+     via FE80::4255:39FF:FEB7:61E9, FastEthernet4/1
+R   2005::/64 [120/2]
+     via FE80::4255:39FF:FEB7:61E9, FastEthernet4/1
+C   2006::/64 [0/0]
+     via ::, FastEthernet4/1
+L   2006::2D0:2BFF:FE15:110A/128 [0/0]
+     via ::, FastEthernet4/1
+C   2007::/64 [0/0]
+     via ::, FastEthernet4/2
+L   2007::2D0:2BFF:FE15:110A/128 [0/0]
+     via ::, FastEthernet4/2
+R   2009::/64 [120/5]
+     via FE80::4255:39FF:FEB7:61E9, FastEthernet4/1
+L   FE80::/10 [0/0]
+     via ::, Null0
+L   FF00::/8 [0/0]
+     via ::, Null0
+
+
+
+
+
+

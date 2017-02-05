@@ -1,0 +1,49 @@
+R1#sh run
+!
+hostname R1
+!
+!
+!
+!
+vlan internal allocation policy ascending
+!
+!
+!
+interface Loopback0
+ ip address 1.1.1.1 255.255.255.255 
+ no shutdown
+!
+interface FastEthernet0/0
+ ip address 192.168.2.2 255.255.255.0
+ duplex auto
+ speed auto
+ no shutdown
+!
+router ospf 1
+ log-adjacency-changes
+ network 1.1.1.1 0.0.0.0 area 0
+ network 192.168.2.0 0.0.0.255 area 0
+!
+router bgp 6
+ no synchronization
+ bgp log-neighbor-changes
+ neighbor 192.168.2.1 remote-as 1
+ no auto-summary
+!
+!
+!
+ip http server
+no ip http secure-server
+!
+no cdp run
+!
+!
+!
+line con 0
+line aux 0
+line vty 0 4
+ login
+!
+scheduler allocate 20000 1000
+!
+end

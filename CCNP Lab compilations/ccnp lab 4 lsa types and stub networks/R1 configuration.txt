@@ -1,0 +1,65 @@
+R1#sh run
+Building configuration...
+
+Current configuration : 543 bytes
+!
+version 12.4
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname R1
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface g0/0
+ ip address 10.0.0.3 255.255.255.0
+ duplex auto
+ speed auto
+ no shutdown
+!
+interface g0/1
+ no ip address
+ duplex auto
+ speed auto
+ shutdown
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+router ospf 1
+ log-adjacency-changes
+ area 4 stub
+ network 10.0.0.0 0.0.0.255 area 4
+!
+ip classless
+!
+!
+!
+!
+!
+!
+!
+line con 0
+line vty 0 4
+ login
+!
+!
+!
+end

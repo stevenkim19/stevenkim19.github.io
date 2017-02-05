@@ -1,0 +1,91 @@
+S1#sh run
+!
+hostname S1
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+!
+no aaa new-model
+system mtu routing 1500
+authentication mac-move permit
+ip subnet-zero
+ip routing
+!
+!
+!
+!
+!
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree etherchannel guard misconfig
+spanning-tree extend system-id
+!
+vlan internal allocation policy ascending
+!
+!
+!
+!
+interface FastEthernet0/1
+ no switchport
+ ip address 192.168.3.1 255.255.255.0
+ no shutdown
+!
+interface FastEthernet0/2
+ no switchport
+ ip address 192.168.4.1 255.255.255.0
+ no shutdown
+!
+interface FastEthernet0/3
+ no switchport
+ ip address 192.168.5.1 255.255.255.0
+ no shutdown
+!
+interface FastEthernet0/4
+ no switchport
+ ip address 192.168.8.1 255.255.255.0
+ ip ospf mtu-ignore
+ no shutdown
+!
+router ospf 2
+ log-adjacency-changes
+ redistribute bgp 4
+ network 192.168.8.0 0.0.0.255 area 0
+ default-information originate
+!
+router bgp 4
+ no synchronization
+ bgp log-neighbor-changes
+ network 192.168.3.0
+ network 192.168.4.0
+ network 192.168.5.0
+ network 192.168.8.0
+ redistribute ospf 2 match internal
+ neighbor 192.168.3.2 remote-as 1
+ neighbor 192.168.3.2 next-hop-self
+ neighbor 192.168.4.2 remote-as 2
+ neighbor 192.168.4.2 next-hop-self
+ neighbor 192.168.5.2 remote-as 3
+ neighbor 192.168.5.2 next-hop-self
+ neighbor 192.168.8.2 remote-as 5
+ neighbor 192.168.8.2 next-hop-self
+ no auto-summary
+!
+ip classless
+ip http server
+ip http secure-server
+!
+!
+!
+!
+line con 0
+line vty 0 4
+ login
+line vty 5 15
+ login
+!
+end

@@ -1,0 +1,124 @@
+Current configuration : 1619 bytes
+!
+version 12.4
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname R2
+!
+boot-start-marker
+boot-end-marker
+!
+logging message-counter syslog
+!
+no aaa new-model
+memory-size iomem 10
+!
+dot11 syslog
+ip source-route
+!
+!
+ip cef
+!
+!
+ipv6 unicast-routing
+ipv6 cef
+!
+
+interface FastEthernet0/0
+ ip address 192.168.1.62 255.255.255.192
+ duplex auto
+ speed auto
+ ipv6 address 2000::2/64
+ ipv6 ospf 1 area 0
+!
+interface FastEthernet0/1
+ ip address 192.168.1.65 255.255.255.224
+ duplex auto
+ speed auto
+ ipv6 address 2001::1/64
+ ipv6 ospf 1 area 0
+
+!
+router ospf 1
+ router-id 192.168.1.65
+ log-adjacency-changes
+ network 192.168.1.0 0.0.0.63 area 0
+ network 192.168.1.64 0.0.0.31 area 0
+!
+ip forward-protocol nd
+no ip http server
+no ip http secure-server
+!
+!
+!
+ipv6 router ospf 1
+ router-id 192.168.1.65
+ log-adjacency-changes
+!
+!
+control-plane
+!
+!
+line con 0
+line aux 0
+line vty 0 4
+ login
+!
+scheduler allocate 20000 1000
+end
+
+
+IPv6 Routing Table - Default - 11 entries
+Codes: C - Connected, L - Local, S - Static, U - Per-user Static route
+       B - BGP, M - MIPv6, R - RIP, I1 - ISIS L1
+       I2 - ISIS L2, IA - ISIS interarea, IS - ISIS summary, D - EIGRP
+       EX - EIGRP external
+       O - OSPF Intra, OI - OSPF Inter, OE1 - OSPF ext 1, OE2 - OSPF ext 2
+       ON1 - OSPF NSSA ext 1, ON2 - OSPF NSSA ext 2
+C   2000::/64 [0/0]
+     via FastEthernet0/0, directly connected
+L   2000::2/128 [0/0]
+     via FastEthernet0/0, receive
+C   2001::/64 [0/0]
+     via FastEthernet0/1, directly connected
+L   2001::1/128 [0/0]
+     via FastEthernet0/1, receive
+O   2002::/64 [110/2]
+     via FE80::2D0:2BFF:FE15:110A, FastEthernet0/1
+O   2003::/64 [110/3]
+     via FE80::2D0:2BFF:FE15:110A, FastEthernet0/1
+O   2004::/64 [110/2]
+     via FE80::2D0:2BFF:FE15:110A, FastEthernet0/1
+OE2 2005::/64 [110/10]
+     via FE80::2D0:2BFF:FE15:110A, FastEthernet0/1
+O   2020::/64 [110/2]
+     via FE80::AEF2:C5FF:FE55:9788, FastEthernet0/0
+O   2021::/64 [110/4]
+     via FE80::2D0:2BFF:FE15:110A, FastEthernet0/1
+L   FF00::/8 [0/0]
+     via Null0, receive
+
+
+Codes: C - connected, S - static, R - RIP, M - mobile, B - BGP
+       D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area
+       N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2
+       E1 - OSPF external type 1, E2 - OSPF external type 2
+       i - IS-IS, su - IS-IS summary, L1 - IS-IS level-1, L2 - IS-IS level-2
+       ia - IS-IS inter area, * - candidate default, U - per-user static route
+       o - ODR, P - periodic downloaded static route
+
+Gateway of last resort is not set
+
+     192.168.1.0/24 is variably subnetted, 6 subnets, 5 masks
+O       192.168.1.96/28 [110/2] via 192.168.1.94, 01:15:18, FastEthernet0/1
+O E2    192.168.1.120/30 [110/20] via 192.168.1.94, 01:15:18, FastEthernet0/1
+O E2    192.168.1.124/30 [110/20] via 192.168.1.94, 00:45:18, FastEthernet0/1
+O       192.168.1.112/29 [110/3] via 192.168.1.94, 01:14:38, FastEthernet0/1
+C       192.168.1.64/27 is directly connected, FastEthernet0/1
+C       192.168.1.0/26 is directly connected, FastEthernet0/0
+     192.168.2.0/30 is subnetted, 1 subnets
+O       192.168.2.4 [110/2] via 192.168.1.1, 01:15:09, FastEthernet0/0
+     192.168.3.0/30 is subnetted, 1 subnets
+O       192.168.3.0 [110/4] via 192.168.1.94, 01:14:39, FastEthernet0/1

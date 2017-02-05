@@ -1,0 +1,207 @@
+S1#sh run
+Current configuration : 2376 bytes
+!
+version 12.2
+no service pad
+service timestamps debug uptime
+service timestamps log uptime
+no service password-encryption
+!
+hostname S1
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+!
+sdm prefer dual-ipv4 routing 
+no aaa new-model
+system mtu routing 1500
+authentication mac-move permit
+ip subnet-zero
+ip routing
+!
+!
+ipv6 unicast-routing
+!
+!
+!
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree etherchannel guard misconfig
+spanning-tree extend system-id
+!
+vlan internal allocation policy ascending
+!
+!
+!
+!
+interface FastEthernet0/1
+ no switchport
+ no shutdown
+ no ip address
+ ipv6 address 2001::/64 eui-64
+ ipv6 rip Cisco enable
+!
+interface FastEthernet0/2
+ no switchport
+ no shutdown
+ no ip address
+ ipv6 address 2009::/64 eui-64
+ ipv6 rip Cisco enable
+!
+interface FastEthernet0/3
+!
+interface FastEthernet0/4
+!
+interface FastEthernet0/5
+!
+interface FastEthernet0/6
+!
+interface FastEthernet0/7
+!
+interface FastEthernet0/8
+!
+interface FastEthernet0/9
+!
+interface FastEthernet0/10
+!
+interface FastEthernet0/11
+!
+interface FastEthernet0/12
+!
+interface FastEthernet0/13
+!
+interface FastEthernet0/14
+!
+interface FastEthernet0/15
+!
+interface FastEthernet0/16
+!
+interface FastEthernet0/17
+!
+interface FastEthernet0/18
+!
+interface FastEthernet0/19
+!
+interface FastEthernet0/20
+!
+interface FastEthernet0/21
+!
+interface FastEthernet0/22
+!
+interface FastEthernet0/23
+!
+interface FastEthernet0/24
+!
+interface FastEthernet0/25
+!
+interface FastEthernet0/26
+!
+interface FastEthernet0/27
+!
+interface FastEthernet0/28
+!
+interface FastEthernet0/29
+!
+interface FastEthernet0/30
+!
+interface FastEthernet0/31
+!
+interface FastEthernet0/32
+!
+interface FastEthernet0/33
+!
+interface FastEthernet0/34
+!
+interface FastEthernet0/35
+!
+interface FastEthernet0/36
+!
+interface FastEthernet0/37
+!
+interface FastEthernet0/38
+!
+interface FastEthernet0/39
+!
+interface FastEthernet0/40
+!
+interface FastEthernet0/41
+!
+interface FastEthernet0/42
+!
+interface FastEthernet0/43
+!
+interface FastEthernet0/44
+!
+interface FastEthernet0/45
+!
+interface FastEthernet0/46
+!
+interface FastEthernet0/47
+!
+interface FastEthernet0/48
+!
+interface GigabitEthernet0/1
+!
+interface GigabitEthernet0/2
+!
+interface GigabitEthernet0/3
+!
+interface GigabitEthernet0/4
+!
+interface Vlan1
+ ip address 192.168.1.1 255.255.255.0
+!
+ip classless
+ip http server
+ip http secure-server
+!
+!
+ip sla enable reaction-alerts
+ipv6 router rip Cisco
+!
+!
+!
+!
+!
+line con 0
+line vty 0 4
+ login
+line vty 5 15
+ login
+!
+end
+
+Routing Table:
+IPv6 Routing Table - Default - 11 entries
+Codes: C - Connected, L - Local, S - Static, U - Per-user Static route
+       B - BGP, R - RIP, D - EIGRP, EX - EIGRP external
+       O - OSPF Intra, OI - OSPF Inter, OE1 - OSPF ext 1, OE2 - OSPF ext 2
+       ON1 - OSPF NSSA ext 1, ON2 - OSPF NSSA ext 2
+R   2000::/64 [120/2]
+     via FE80::AEF2:C5FF:FE55:9789, FastEthernet0/1
+C   2001::/64 [0/0]
+     via FastEthernet0/1, directly connected
+L   2001::225:46FF:FE32:3541/128 [0/0]
+     via FastEthernet0/1, receive
+R   2003::/64 [120/2]
+     via FE80::217:E0FF:FE51:B2B0, FastEthernet0/2
+R   2004::/64 [120/3]
+     via FE80::217:E0FF:FE51:B2B0, FastEthernet0/2
+R   2005::/64 [120/4]
+     via FE80::217:E0FF:FE51:B2B0, FastEthernet0/2
+R   2006::/64 [120/5]
+     via FE80::217:E0FF:FE51:B2B0, FastEthernet0/2
+R   2007::/64 [120/6]
+     via FE80::217:E0FF:FE51:B2B0, FastEthernet0/2
+C   2009::/64 [0/0]
+     via FastEthernet0/2, directly connected
+L   2009::225:46FF:FE32:3542/128 [0/0]
+     via FastEthernet0/2, receive
+L   FF00::/8 [0/0]
+     via Null0, receive
+

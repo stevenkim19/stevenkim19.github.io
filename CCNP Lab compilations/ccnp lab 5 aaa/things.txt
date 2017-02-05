@@ -1,0 +1,1 @@
+bridged connection and ip setup

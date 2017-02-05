@@ -1,0 +1,75 @@
+R6#sh run
+Building configuration...
+
+Current configuration : 819 bytes
+!
+version 12.4
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname R6
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface FastEthernet0/0
+ ip address 10.0.3.1 255.255.255.0
+ duplex auto
+ speed auto
+ no shutdown
+!
+interface FastEthernet0/1
+ ip address 10.0.2.1 255.255.255.0
+ duplex auto
+ speed auto
+ no shutdown
+!
+interface Serial0/0/0
+ no ip address
+ shutdown
+!
+interface Serial0/0/1
+ ip address 10.0.4.2 255.255.255.252
+ no shutdown
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+router ospf 1
+ log-adjacency-changes
+ area 2 nssa
+ network 10.0.3.0 0.0.0.255 area 3
+ network 10.0.2.0 0.0.0.255 area 2
+ network 10.0.4.0 0.0.0.3 area 0
+!
+ip classless
+!
+!
+!
+!
+!
+!
+!
+line con 0
+line vty 0 4
+ login
+!
+!
+!
+end
