@@ -1,6 +1,4 @@
-.dropdown:hover .dropdown-menu {
-display: block;
-}
+/*Front Page */
 
 /* About Me */
 .center {
@@ -64,4 +62,43 @@ img.college_pic {
 /* Cisco */
 #Cisco_Table {
   padding: 20px;
+}
+
+/* Contact */
+#contact_buttons_container {
+  padding-top: 200px;
+  padding-bottom: 200px;
+}
+
+.buttons_list {
+  padding-left: 100px;
+  padding-right: 100px;
+}
+
+.ind_buttons {
+  background-color: white;
+  border-color: white;
+}
+
+#email_button {
+  style="padding-right:200px;
+}
+
+#Linkedin_button {
+  padding-left:200px;
+  padding-right:200px;
+}
+
+#Github_button {
+  style="padding-left:200px;
+}
+
+/* Footer */
+footer {
+  background-color: white;
+  padding: 50px 0;
+}
+
+p.copyright {
+    margin: 15px 0 0;
 }
